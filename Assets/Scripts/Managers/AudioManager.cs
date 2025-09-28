@@ -21,4 +21,76 @@ public class AudioManager : MonoBehaviour
     public AudioClip Hit_SpeedUp;
     public AudioClip Hit_Coin;
     public AudioClip Death;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void PlayBendDownSound()
+    {
+        sfxSource.PlayOneShot(Bend_Down);
+    }
+
+    public void Pause()
+    {
+        musicSource.clip = null;
+    }
+
+    public void PlayJumpSound()
+    {
+        sfxSource.PlayOneShot(Jump);
+    }
+
+    public void PlayHitSpeedUpSound()
+    {
+        sfxSource.PlayOneShot(Hit_SpeedUp);
+    }
+
+    public void PlayHitCoinSound()
+    {
+        sfxSource.PlayOneShot(Hit_Coin);
+    }
+
+    public void PlayDeathSound()
+    {
+        sfxSource.PlayOneShot(Death);
+    }
+
+    private void Start()
+    {
+        PlayBackgroundMenuGame();
+    }
+
+    public void PlayButtonSound()
+    {
+        sfxSource.PlayOneShot(ButtonSound);
+    }
+
+    public void PlayBackgroundMenuGame()
+    {
+        int randomIndex = Random.Range(0, BackgroundMenuGame.Length);
+        musicSource.clip = BackgroundMenuGame[randomIndex];
+        musicSource.Play();
+    }
+
+    public void PlayBackgroundMusicGame()
+    {
+        int randomIndex = Random.Range(0, BackgroundGameSound.Length);
+        musicSource.clip = BackgroundGameSound[randomIndex];
+        musicSource.Play();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
+    }
 }
