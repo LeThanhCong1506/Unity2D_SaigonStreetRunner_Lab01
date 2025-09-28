@@ -8,4 +8,18 @@ public class RepeatBackground : MonoBehaviour
     public float deviation;
     private Vector3 m_startPos;
     private float m_endWith;
+
+    void Start()
+    {
+        m_startPos = transform.position;
+        m_endWith = GetComponent<BoxCollider>().size.x / deviation;
+    }
+
+    void Update()
+    {
+        if (transform.position.x < m_startPos.x - m_endWith)
+        {
+            transform.position = m_startPos;
+        }
+    }
 }
