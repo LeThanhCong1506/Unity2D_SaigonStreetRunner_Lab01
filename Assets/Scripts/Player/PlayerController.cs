@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             if (HackCheck)
             {
-                //AudioManager.Instance.PlayHitSpeedUpSound();
+                AudioManager.Instance.PlayHitSpeedUpSound();
                 StartCoroutine(m_playerAnimation.WaitForStartSpeedPowerUp());
             }
         }
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
             }
             if (matched)
             {
-                //m_gameManager.CloseHackDisplay();
+                m_gameManager.CloseHackDisplay();
                 HackCheck = false;
                 Debug.Log("Cheat activated: New Combo!");
                 m_cheatBuffer.Clear();
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
             }
             if (matched)
             {
-                //m_gameManager.OpenHackDisplay();
+                m_gameManager.OpenHackDisplay();
                 HackCheck = true;
                 Debug.Log("Cheat unactivated!");
                 m_cheatBuffer.Clear();
