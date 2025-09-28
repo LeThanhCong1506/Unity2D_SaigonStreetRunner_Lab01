@@ -8,4 +8,25 @@ public class PlayerPowerUp
 {
     private PlayerController m_playerController;
     private PlayerAnimation m_playerAnimation;
+
+    public PlayerPowerUp(PlayerController playerController, PlayerAnimation playerAnimation)
+    {
+        m_playerController = playerController;
+        m_playerAnimation = playerAnimation;
+    }
+
+    public void HandleTrigger(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Speed"))
+        {
+            //AudioManager.Instance.PlayHitSpeedUpSound();
+            m_playerController.StartCoroutine(m_playerAnimation.WaitForStartSpeedPowerUp());
+        }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            //AudioManager.Instance.PlayHitCoinSound();
+            m_playerController.AddMoreDistance(1000);
+            GameObject.Destroy(collision.gameObject);
+        }
+    }
 }
