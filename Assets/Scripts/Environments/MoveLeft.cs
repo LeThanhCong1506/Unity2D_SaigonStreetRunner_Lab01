@@ -10,4 +10,31 @@ public class MoveLeft : MonoBehaviour
     public float Speed;
     private PlayerController m_playerControllerScript;
     public event Action OnOutOfScreen;
+
+    void Start()
+    {
+        m_playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+
+    void Update()
+    {
+        if (transform.position.x < -80) // hoặc điều kiện phù hợp
+        {
+            OnOutOfScreen?.Invoke();
+        }
+
+        if (m_playerControllerScript == null || m_playerControllerScript.Gameover)
+            return;
+
+        if (m_playerControllerScript.AteSpeed || m_playerControllerScript.HackCheck)
+            if (gameObject.tag == "Obstacle")
+                gameObject.GetComponent<EdgeCollider2D>().enabled = false;
+
+        transform.Translate(Vector3.left * Time.deltaTime * Speed, Space.World);
+    }
+
+    public void IncreaseSpeed(float amount)
+    {
+        Speed += amount;
+    }
 }
