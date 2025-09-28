@@ -22,7 +22,7 @@ public class PlayerCollision
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            //AudioManager.Instance.PlayDeathSound();
+            AudioManager.Instance.PlayDeathSound();
             m_playerController.Gameover = true;
             m_animation.SetBool("Fall", true);
             m_animation.SetBool("Jump", false);

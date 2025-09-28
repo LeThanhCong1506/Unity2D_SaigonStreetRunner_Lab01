@@ -42,21 +42,21 @@ public class PlayerAnimation
         m_playerController.transform.position = new Vector2(m_playerController.transform.position.x + 0.18f, m_playerController.transform.position.y);
 
         yield return new WaitForSeconds(0.2f);
-        //m_gameManager.IncreaseAllMoveLeftSpeed(10, 0);
+        m_gameManager.IncreaseAllMoveLeftSpeed(10, 0);
         m_playerController.StartCoroutine(WaitForEndSpeedPowerUp());
     }
 
     private IEnumerator WaitForEndSpeedPowerUp()
     {
         yield return new WaitForSeconds(4);
-        //m_gameManager.IncreaseAllMoveLeftSpeed(-4, 0);
+        m_gameManager.IncreaseAllMoveLeftSpeed(-4, 0);
         yield return new WaitForSeconds(2);
-        //m_gameManager.IncreaseAllMoveLeftSpeed(-3, 0);
+        m_gameManager.IncreaseAllMoveLeftSpeed(-3, 0);
         m_playerAnim.SetBool("Speed", false);
         yield return new WaitForSeconds(1);
-        //m_gameManager.IncreaseAllMoveLeftSpeed(-2, 0);
+        m_gameManager.IncreaseAllMoveLeftSpeed(-2, 0);
         yield return new WaitForSeconds(1);
-        //m_gameManager.IncreaseAllMoveLeftSpeed(-1, 0);
+        m_gameManager.IncreaseAllMoveLeftSpeed(-1, 0);
         m_playerController.transform.position = new Vector2(m_playerController.transform.position.x - 0.18f, m_playerController.transform.position.y);
         m_playerController.AteSpeed = false;
     }

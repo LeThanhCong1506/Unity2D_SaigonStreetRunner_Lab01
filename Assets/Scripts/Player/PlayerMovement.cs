@@ -28,7 +28,7 @@ public class PlayerMovement
 
     public void HandleJump()
     {
-        //AudioManager.Instance.PlayJumpSound();
+        AudioManager.Instance.PlayJumpSound();
         playerController.GetComponent<Animator>().SetBool("Jump", true);
         playerRb.AddForce(Vector2.up * playerController.JumpForce);
         playerController.IsOnGround = false;
@@ -36,7 +36,7 @@ public class PlayerMovement
 
     public void HandleHoldBend()
     {
-        //AudioManager.Instance.PlayBendDownSound();
+        AudioManager.Instance.PlayBendDownSound();
         playerController.WaitTurn = true;
         playerController.GetComponent<Animator>().SetInteger("Bend", 2);
         endHeight = playerController.GetComponent<BoxCollider2D>().size.y;
